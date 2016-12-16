@@ -1,0 +1,137 @@
+DROP TABLE IF EXISTS `account_groups`;
+CREATE TABLE `account_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `account_groups` (`id`, `name`, `status`) VALUES
+(1,	'Default',	1),
+(2,	'Silver',	1),
+(3,	'Gold',	1),
+(4,	'Diamond',	1),
+(5,	'Platinum',	1),
+(6,	'Ruby',	1),
+(7,	'Disabled Users',	0);
+
+DROP TABLE IF EXISTS `ban_logs`;
+CREATE TABLE `ban_logs` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `reason` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `slug` text NOT NULL,
+  `description` text NOT NULL,
+  `topics` bigint(20) NOT NULL,
+  `posts` bigint(20) NOT NULL,
+  `sort_lvl` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `topics`, `posts`, `sort_lvl`) VALUES
+(3,	'News and Information',	'news-and-information-108',	'What\'s new?',	0,	0,	1),
+(4,	'Member Introduction',	'member-introduction-979',	'New here? Introduce yourself to the community.',	0,	0,	2),
+(5,	'Member Chat',	'member-chat-826',	'Let\'s discuss and chat here.',	0,	0,	3),
+(6,	'Tutorials',	'tutorials-709',	'Made something recently? Share it with us.',	0,	0,	4);
+
+DROP TABLE IF EXISTS `email_updates`;
+CREATE TABLE `email_updates` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `confirm_code` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
+  `post_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `post_category` bigint(20) NOT NULL,
+  `post_topic` bigint(20) NOT NULL,
+  `post_date` datetime NOT NULL,
+  `post_by` bigint(20) NOT NULL,
+  `post_content` text NOT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `read_history`;
+CREATE TABLE `read_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE `settings` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `settings` (`id`, `name`, `value`) VALUES
+(1,	'website_name',	'PHP Login Script'),
+(2,	'googleReCaptcha',	'0'),
+(3,	'googleRecaptcha_PUBLICkey',	'6LekSxITAAAAAHXbPN5LqAAo9S-YhaXbi2F9JR6D'),
+(4,	'googleRecaptcha_SECRETkey',	'6LekSxITAAAAADXgoYTvgbrvrYOFjVDzoWgx-m5m'),
+(5,	'StayLoggedDAYS',	'2'),
+(6,	'emailConfirmation',	'1'),
+(7,	'website_url',	'https://overfeat.com/staging/php-login-script/'),
+(8,	'forums',	'1'),
+(9,	'avatarUploads',	'1'),
+(10,	'showProfiles',	'1');
+
+DROP TABLE IF EXISTS `topics`;
+CREATE TABLE `topics` (
+  `topic_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `topic_slug` text NOT NULL,
+  `topic_cat` bigint(20) NOT NULL,
+  `topic_content` text NOT NULL,
+  `topic_name` text NOT NULL,
+  `topic_date` datetime NOT NULL,
+  `topic_by` bigint(20) NOT NULL,
+  `topic_views` bigint(20) NOT NULL,
+  `replies` bigint(20) NOT NULL,
+  PRIMARY KEY (`topic_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `user_id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(32) NOT NULL,
+  `user_email` varchar(64) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `user_verified` tinyint(4) NOT NULL DEFAULT '0',
+  `activation_hash` varchar(255) NOT NULL,
+  `reset_hash` varchar(255) NOT NULL,
+  `rememberme_token` varchar(255) NOT NULL,
+  `failed_logins` mediumint(9) NOT NULL,
+  `last_failed_login` bigint(20) NOT NULL,
+  `last_logged_in` datetime NOT NULL,
+  `registration_datetime` datetime NOT NULL,
+  `registration_ip` varchar(255) NOT NULL,
+  `account_group` int(11) NOT NULL DEFAULT '1',
+  `admin_powers` int(11) NOT NULL DEFAULT '0',
+  `forum_powers` int(11) NOT NULL DEFAULT '0',
+  `account_status` int(11) NOT NULL DEFAULT '1',
+  `avatar_url` text NOT NULL,
+  `forum_posts` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `password_hash`, `user_verified`, `activation_hash`, `reset_hash`, `rememberme_token`, `failed_logins`, `last_failed_login`, `last_logged_in`, `registration_datetime`, `registration_ip`, `account_group`, `admin_powers`, `forum_powers`, `account_status`, `avatar_url`, `forum_posts`) VALUES
+(1,	'admin',	'hello@areebmajeed.me',	'$2y$12$CpMIe4DiIix48w75KQPuVeRkUb9YzYQG00fAlhPLIZ/d9zb/.R8aO',	1,	'',	'',	'',	0,	0,	'2015-12-11 05:00:33',	'2015-12-11 05:00:00',	'127.0.0.1',	1,	1,	1,	1,	'https://login-script.com/demo/uploads/e7d42c8840ab62b9db8922ef60311cbf0e24a938_a.png',	0),
+(2,	'super',	'hello@areebmajeed.me',	'$2y$12$CpMIe4DiIix48w75KQPuVeRkUb9YzYQG00fAlhPLIZ/d9zb/.R8aO',	1,	'',	'',	'',	0,	0,	'2015-12-11 05:00:33',	'2015-12-11 05:00:00',	'127.0.0.1',	2,	0,	0,	1,	'https://login-script.com/demo/uploads/e7d42c8840ab62b9db8922ef60311cbf0e24a938_a.png',	0),
+(3,	'user',	'hello@areebmajeed.me',	'$2y$12$CpMIe4DiIix48w75KQPuVeRkUb9YzYQG00fAlhPLIZ/d9zb/.R8aO',	1,	'',	'',	'',	0,	0,	'2015-12-11 05:00:33',	'2015-12-11 05:00:00',	'127.0.0.1',	1,	0,	0,	1,	'https://login-script.com/demo/uploads/e7d42c8840ab62b9db8922ef60311cbf0e24a938_a.png',	0);
