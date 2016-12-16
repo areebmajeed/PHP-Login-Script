@@ -1,4 +1,4 @@
-# PHP Login Sript
+# PHP Login Script
 
 More and more websites make their way to internet daily, and the many existing get hacked. Without a decent framework for your site, the chances are that your site may get hacked, that's where our simple PHP login script comes to play, our PHP secure login script was coded with security and performance in mind. 
 
@@ -16,9 +16,11 @@ Built with secure and performance in mind, it's highly fast and doesn't act as b
 
 ## Installation
 
-Installation follows a simple and straightforward manner. Before you start, please upload all the files to the desired folder, mostly probably public_html or www. Once, you are done, go to your hosting control panel and create a database. Finally, open config folder and start filling it. The first series of variables and constants is self-explaining. Fill the database details properly and make sure that they are valid, otherwise the site may not behave as expected. Also, add your domain from our website and place your API key at the config file.  
-You can then enable or disable EVAL. EVAL enables you to execute PHP and MySQL directly from web (admin panel), by default, it is disabled (set to 0), if you wish to enable it, turn its value to 1. Further, enter the COOKIE_DOMAIN constant with your domain. Like, *.example.com. Remember, the asterisk (*) as the sub-domain allows all the sub-domains to access your cookies. Finally, fill the COOKIE_SECRET_KEY with any randomly filled value. By default, the script uses SendMail installed at your host but if you wish to switch to SMTP.
+Installation follows a simple and straightforward manner. Before you start, please upload all the files to the desired folder, mostly probably public_html or www. 
 
+Once, you are done, go to your hosting control panel and create a database. Finally, open config folder and start filling it. The first series of variables and constants is self-explaining. Fill the database details properly and make sure that they are valid, otherwise the site may not behave as expected. Also, add your domain from our website and place your API key at the config file.  
+
+You can then enable or disable EVAL. EVAL enables you to execute PHP and MySQL directly from web (admin panel), by default, it is disabled (set to 0), if you wish to enable it, turn its value to 1. Further, enter the COOKIE_DOMAIN constant with your domain. Like, *.example.com. Remember, the asterisk (*) as the sub-domain allows all the sub-domains to access your cookies. Finally, fill the COOKIE_SECRET_KEY with any randomly filled value. By default, the script uses SendMail installed at your host but if you wish to switch to SMTP.
 
 Now, simply open installer.php using your browser. Once done with the installation, you can login into the admin panel (http://example.com/admin) with admin” and “password”. This information can then be modified by logging in and going into the Edit Profile page. Additionally, the site comes with a default sample user with username "user", you may delete that account.
 
