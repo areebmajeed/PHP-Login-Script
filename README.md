@@ -34,8 +34,8 @@ Now, simply open installer.php using your browser. Once done with the installati
 
 ## Authors
 
-* **[Areeb Majeed](http://areebmajeed.me/)** - *Developed by him*
-* **[Hardik Manktala](http://hardikmanktala.com/)** - *Some design work*
+* **[Areeb Majeed](http://areebmajeed.me/)**
+* **[Hardik Manktala](http://hardikmanktala.com/)**
 
 ## License
 
