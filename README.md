@@ -36,7 +36,8 @@ Now, simply open installer.php using your browser. Once done with the installati
 
 * **[Areeb Majeed](http://areebmajeed.me/)**
 * **[Hardik Manktala](http://hardikmanktala.com/)**
+* **[Overfeat](https://overfeat.com/)**
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under [MIT](https://opensource.org/licenses/mit-license.php). You may use this script for free for any private or commercial projects.
