@@ -74,7 +74,27 @@ $wipe = array(
 "+union+",
 "%20union%20",
 "/union/*",
-' union '
+' union ',
+"union",
+"sql",
+"mysql",
+"database",
+"cookie",
+"coockie",
+"select",
+"from",
+"where",
+"benchmark",
+"concat",
+"table",
+"into",
+"by",
+"values",
+"exec",
+"shell",
+"truncate",
+"wget",
+"/**/"
 
 );
  
