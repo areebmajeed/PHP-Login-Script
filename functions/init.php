@@ -357,8 +357,6 @@ $core_system_messages[] = "The account has been already confirmed.";
 	
 } else {
 	
-$user = mysqli_fetch_array($load);
-
 mysqli_query($con,"UPDATE users SET user_verified = 1, activation_hash = null WHERE user_id = '{$user['user_id']}'");	
 
 $core_system_messages[] = "Account successfully confirmed. You may login now.";
@@ -392,8 +390,6 @@ $core_system_messages[] = "Your username is left blank.";
 $core_system_messages[] = "Your account was not found.";
 	
 } else {
-	
-$user = mysqli_fetch_array($load_username);
 	
 $reset_hash = hash('sha256',mt_rand());
 $user_id = $user['user_id'];
@@ -475,8 +471,6 @@ $core_system_messages[] = "The password doesn't match with the repeating field."
 	
 } else {
 	
-$user = mysqli_fetch_array($load);
-
 $password_hash = password_hash($password, PASSWORD_DEFAULT, array('cost' => 12));
 
 mysqli_query($con,"UPDATE users SET password_hash = '{$password_hash}', reset_hash = null WHERE user_id = '{$user['user_id']}'");
@@ -671,8 +665,6 @@ $core_system_messages[] = "The email change couldn't be confirmed.";
 	
 } else {
 	
-$data = mysqli_fetch_array($load);
-
 $_SESSION['user_email'] = $data['email'];
 mysqli_query($con,"UPDATE users SET user_email = '{$data['email']}' WHERE user_id = '{$data['user_id']}'");
 mysqli_query($con,"DELETE FROM email_updates WHERE id = '{$data['id']}'");
